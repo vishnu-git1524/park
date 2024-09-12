@@ -25,9 +25,9 @@ const Layout = () => {
         <div className="main-container">
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container">
-                    <Link className="navbar-brand" to="/"><img className="logo" src="./logo.png" /></Link>
+                    <a className="navbar-brand" href="#" style={{ fontSize: '24px', fontWeight: 'bold', letterSpacing: '2px', color: '#fff', textDecoration: 'none' }}>CarkPrk🚗</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon">SignIn</span>
+                        <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul className="navbar-nav ms-auto align-items-center">
@@ -89,7 +89,7 @@ const Layout = () => {
             <footer className="container-fluid p-5 mt-5">
                 <div className="row">
                     <div className="col-md-4">
-                        <p>Copyright &copy; 2024 by TechMojo</p>
+                        <p>Copyright &copy; 2024 by CarPrk</p>
                     </div>
                     <div className="col-md-4">
                     </div>

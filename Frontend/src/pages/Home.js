@@ -1,54 +1,57 @@
 import React from "react";
 import "./../css/home.scss";
+import { Link } from "react-router-dom";
 
 function Home() {
-	return (
-		<div>
-			{/* <div className='banner'>
+  return (
+    <div>
+      <div className='banner'>
         <div className='overlay'>
-          <h1>Looking for parking. <br /> <span>You have came to right place</span></h1>
+          <h1 style={{ fontSize: '24px', fontWeight: 'bold', letterSpacing: '2px', color: '#fff', textDecoration: 'none' }}>Looking for parking. <br /> <span>You have came to right place</span></h1>
         </div>
       </div>
 
       <div className='container mt-5'>
-        <section className='my-5'>
-          <h2>How EzyPark Works</h2>
+       <section className='my-5'>
+          <h2 className="text-center">How CarkPrk🚗 Works</h2>
 
           <div className='row mt-4'>
-            <div className='col-md-4 text-center'>
-              <div className='card p-4'>
-                <img src='./map.avif' className='services-card-icon'></img>
+            <div className='col-md-4 text-center mb-4 mb-md-0'>
+              <div className='card shadow-lg p-4'>
+                <img src='./map.avif' className='services-card-icon rounded-circle' style={{ width: '50px', height: '50px' }}></img>
                 <div className='mt-4'>
-                  <h3>Search</h3>
-                  <p className='mt-3'>Search for a parking spot according to your needs.</p>
+                  <h3 style={{ fontSize: '18px', fontWeight: 'bold' }}>Search</h3>
+                  <p className='mt-3' style={{ fontSize: '14px', color: '#666' }}>Search for a parking spot according to your needs.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className='col-md-4 text-center mb-4 mb-md-0'>
+              <div className='card shadow-lg p-4'>
+                <img src='./book.png' className='services-card-icon rounded-circle' style={{ width: '50px', height: '50px' }}></img>
+                <div className='mt-4'>
+                  <h3 style={{ fontSize: '18px', fontWeight: 'bold' }}>Book</h3>
+                  <p className='mt-3' style={{ fontSize: '14px', color: '#666' }}>Reserved Parking spot and pay desired amount..</p>
                 </div>
               </div>
             </div>
 
             <div className='col-md-4 text-center'>
-              <div className='card p-4'>
-                <img src='./book.png' className='services-card-icon'></img>
+              <div className='card shadow-lg p-4'>
+                <img src='./parking.png' className='services-card-icon rounded-circle' style={{ width: '50px', height: '50px' }}></img>
                 <div className='mt-4'>
-                  <h3>Book</h3>
-                  <p className='mt-3'>Reserved Parking spot and pay desired amount..</p>
-                </div>
-              </div>
-            </div>
-
-            <div className='col-md-4 text-center'>
-              <div className='card p-4'>
-                <img src='./parking.png' className='services-card-icon'></img>
-                <div className='mt-4'>
-                  <h3>Park</h3>
-                  <p className='mt-3'>Follow the provided instructions and park your car.</p>
+                  <h3 style={{ fontSize: '18px', fontWeight: 'bold' }}>Park</h3>
+                  <p className='mt-3' style={{ fontSize: '14px', color: '#666' }}>Follow the provided instructions and park your car.</p>
                 </div>
               </div>
             </div>
           </div>
-        </section> */}
+        </section>
 
-			{/* Testimonial */}
-			{/* <section className='my-5'>
+      </div>
+
+      {/* Testimonial */}
+      {/* <section className='my-5'>
           <h2 className='mt-5'>Testimonial</h2>
           <div className='row'>
             <div className='col-md-6'>
@@ -67,9 +70,9 @@ function Home() {
             </div>
           </div>
         </section>
-      </div> */}
+      </div>
 
-			<div>
+			{/* <div>
 				<div className="box">
 					<div>
 						<h1 className="hero-text days-one-regular">QUICK SEARCH FOR <span>PARKING</span></h1>
@@ -79,12 +82,12 @@ function Home() {
             <img className="hero-image2" src="./heroimagetwo.jpg" />
           </div>
 				</div>
-			</div>
+			</div> */}
 
 
 
-		</div>
-	);
+    </div>
+  );
 }
 
 export default Home;
