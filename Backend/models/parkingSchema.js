@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const parkingSchema = new mongoose.Schema({
     name: {
@@ -21,10 +21,18 @@ const parkingSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    landmark: {
+        type: String,
+        required: true // optional field
+    },
+    googleMapLink: {
+        type: String,
+        required: true // optional field
+    },
     user_id: {
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'User'
     }
-})
+});
 
-module.exports = mongoose.model("Parking", parkingSchema)
+module.exports = mongoose.model("Parking", parkingSchema);

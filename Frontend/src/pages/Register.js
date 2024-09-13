@@ -1,31 +1,32 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { register } from '../api/api'
-import './../css/auth.scss'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { register } from '../api/api';
+import './../css/auth.scss';
 
 const Register = () => {
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [type, setType] = useState('')
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [type, setType] = useState('');
 
-    const [isRegistered, setIsRegistered] = useState(false)
-    const [error, setError] = useState()
+    const [isRegistered, setIsRegistered] = useState(false);
+    const [error, setError] = useState();
 
     const handleRegister = () => {
-        setIsRegistered(false)
-        setError()
-        register({ name, email, password, type, handleRegisterSuccess, handleRegisterFailure })
-    }
+        setIsRegistered(false);
+        setError();
+        register({ name, email, password, type, handleRegisterSuccess, handleRegisterFailure });
+    };
 
     const handleRegisterSuccess = () => {
-        setIsRegistered(true)
-    }
+        setIsRegistered(true);
+        window.scrollTo(0, 0); // Scroll to top on success
+    };
 
     const handleRegisterFailure = (error) => {
-        
-        setError(error)
-    }
+        setError(error);
+        window.scrollTo(0, 0); // Optionally scroll to top on failure
+    };
 
     return (
         <div className='auth-container'>
@@ -39,7 +40,7 @@ const Register = () => {
                 </div>}
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Name</label>
-                    <input type="name" className="form-control" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
+                    <input type="text" className="form-control" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
@@ -50,20 +51,20 @@ const Register = () => {
                     <input type="password" className="form-control" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="password" className="form-label">Type</label>
-                    <select className="form-select" value={type} onChange={(e) => setType(e.target.value)} required>
+                    <label htmlFor="type" className="form-label">Type</label>
+                    <select className="form-select" id="type" value={type} onChange={(e) => setType(e.target.value)} required>
                         <option value="">Select</option>
                         <option value="owner">Owner</option>
                         <option value="seeker">Seeker</option>
                     </select>
                 </div>
                 <div className='d-flex justify-content-between'>
-                    Are you a existing user?<Link to='/login'>Sign in</Link>
+                    Are you an existing user? <Link to='/login'>Sign in</Link>
                 </div>
-                <button type="submit" className="btn btn-outline-primary mt-3" onClick={() => handleRegister()}>Submit</button>
+                <button type="submit" className="btn btn-outline-primary mt-3" onClick={handleRegister}>Submit</button>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Register
+export default Register;

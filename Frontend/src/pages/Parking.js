@@ -63,7 +63,7 @@ const Parking = () => {
             <div className='row mt-2 g-5'>
                 {parkingCards()}
             </div>
-            <DeleteModal value={selectedParking?.name} showModal={showDeleteModal} setShowModal={setShowDeleteModal} onDeleteConfirm={handleDeleteParking}/>
+            <DeleteModal value={selectedParking?.name} showModal={showDeleteModal} setShowModal={setShowDeleteModal} onDeleteConfirm={handleDeleteParking} />
         </div>
     )
 }

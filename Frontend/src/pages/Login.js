@@ -1,32 +1,32 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
-import { login } from '../api/api'
-import { setUser } from '../reducers/userReducer'
-import './../css/auth.scss'
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { login } from '../api/api';
+import { setUser } from '../reducers/userReducer';
+import './../css/auth.scss';
 
 const Login = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState();
 
-    const [error, setError] = useState()
-
-    // Login API call with callback functions for handling response
     const handleLogin = () => {
-        login({ email, password, handleLoginSuccess, handleLoginFailure })
-    }
+        login({ email, password, handleLoginSuccess, handleLoginFailure });
+    };
 
     const handleLoginSuccess = (data) => {
         dispatch(setUser({ ...data?.user, token: data?.token }));
-        navigate('/')
-    }
+        navigate('/');
+        window.scrollTo(0, 0); // Scroll to top on success
+    };
 
     const handleLoginFailure = (error) => {
-        setError(error)
-    }
+        setError(error);
+        window.scrollTo(0, 0); // Scroll to top on failure
+    };
 
     return (
         <div className='container-fluid auth-container'>
@@ -44,12 +44,12 @@ const Login = () => {
                     <input type="password" className="form-control" id="pass" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 </div>
                 <div className='d-flex justify-content-between'>
-                    Are you a new user?<Link to='/register'>Create account</Link>
+                    Are you a new user? <Link to='/register'>Create account</Link>
                 </div>
-                <button type="submit" className="btn btn-outline-primary mt-3" onClick={() => handleLogin()}>Submit</button>
+                <button type="submit" className="btn btn-outline-primary mt-3" onClick={handleLogin}>Submit</button>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;

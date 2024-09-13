@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet, Link, useNavigate, useLocation } from "react-router-dom";
 import { clearUser } from "../reducers/userReducer";
@@ -10,6 +10,8 @@ const Layout = () => {
     const location = useLocation();
     const dispatch = useDispatch();
 
+    const navbarCollapseRef = useRef(null); // Ref for the collapsible navbar
+
     const handleLogout = () => {
         dispatch(clearUser());
     };
@@ -19,17 +21,39 @@ const Layout = () => {
         if (!user && location.pathname !== '/' && location.pathname !== '/about') {
             navigate('/login')
         }
-    }, [user, location])
+    }, [user, location]);
+
+    // Function to collapse the navbar
+    const collapseNavbar = () => {
+        if (navbarCollapseRef.current) {
+            navbarCollapseRef.current.classList.remove('show');
+        }
+    };
+
+    // Add event listeners to the links
+    useEffect(() => {
+        const links = document.querySelectorAll('.navbar-nav .nav-link');
+        links.forEach(link => {
+            link.addEventListener('click', collapseNavbar);
+        });
+
+        // Clean up the event listeners on component unmount
+        return () => {
+            links.forEach(link => {
+                link.removeEventListener('click', collapseNavbar);
+            });
+        };
+    }, []);
 
     return (
         <div className="main-container">
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container">
-                    <a className="navbar-brand" href="#" style={{ fontSize: '24px', fontWeight: 'bold', letterSpacing: '2px', color: '#fff', textDecoration: 'none' }}>CarkPrk🚗</a>
+                    <a className="navbar-brand" href="/" style={{ fontSize: '24px', fontWeight: 'bold', letterSpacing: '2px', color: '#fff', textDecoration: 'none' }}>CarkPrk🚗</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div className="collapse navbar-collapse" id="navbarNavDropdown">
+                    <div className="collapse navbar-collapse" id="navbarNavDropdown" ref={navbarCollapseRef}>
                         <ul className="navbar-nav ms-auto align-items-center">
                             <li className="nav-item">
                                 <Link className="nav-link" to='/'>Home</Link>

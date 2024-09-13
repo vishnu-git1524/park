@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import './styles.scss'
 import StarRating from '../StarRating/StarRating'
@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 const ParkingCard = ({ parking, onClick, setSelectedParking, setShowDeleteModal }) => {
     const user = useSelector((state) => state.user);
     const navigate = useNavigate()
-    const { name, address, city, lat, long, user_id, owner_rating } = parking
+    const { name, address, city, lat, long, user_id, owner_rating, landmark, googleMapLink } = parking
 
     const handleEdit = (e) => {
         e.stopPropagation();
@@ -30,20 +30,36 @@ const ParkingCard = ({ parking, onClick, setSelectedParking, setShowDeleteModal 
             <div className='px-4 py-4 d-flex justify-content-between'>
                 <div>
                     <h4>{name}</h4>
-                    <span className='mt-5'>Address</span>
+                    <span className='mt-5'>Address:</span>
                     <p>{address}</p>
                     <span>City</span>
                     <p>{city}</p>
                     <div className='d-flex'>
                         <div>
-                            <span>Lat</span>
+                            <span>Lat:</span>
                             <p>{lat}</p>
                         </div>
                         <div className='ms-3'>
-                            <span>Long</span>
+                            <span>Long:</span>
                             <p>{long}</p>
                         </div>
                     </div>
+                    <br />
+                    {/* Display Landmark */}
+                    {landmark && (
+                        <div>
+                            <span>Landmark:</span>
+                            <p>{landmark}</p>
+                        </div>
+                    )}
+                    {/* Display Clickable Google Map Link */}
+                    {googleMapLink && (
+                        <div>
+                            <a href={googleMapLink} target="_blank" rel="noopener noreferrer" className="btn btn-link">
+                            View on Google Maps 🗺
+                            </a>
+                        </div>
+                    )}
                 </div>
                 <div>
                     {user?.type !== 'seeker' &&
@@ -69,4 +85,4 @@ const ParkingCard = ({ parking, onClick, setSelectedParking, setShowDeleteModal 
     )
 }
 
-export default ParkingCard
+export default ParkingCard;
