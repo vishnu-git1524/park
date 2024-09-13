@@ -1,7 +1,7 @@
 const { Router } = require("express")
 const Parking = require("../models/parkingSchema");
 const Joi = require('joi');
-const { Types } = require("mongoose");
+// const { Types } = require("mongoose");
 const Review = require("../models/reviewSchema");
 
 const parkingRouter = Router();
